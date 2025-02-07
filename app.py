@@ -7,6 +7,7 @@ import pickle
 model = pickle.load(open('model.pkl','rb'))
 sc = pickle.load(open('standardscaler.pkl','rb'))
 ms = pickle.load(open('minmaxscaler.pkl','rb'))
+label_encoder = pickle.load(open('label_encoder.pkl', 'rb'))
 
 app = Flask(__name__)
 
@@ -21,7 +22,12 @@ def predict():
     Symptom_3 = request.form['Symptom_3']
     Symptom_4 = request.form['Symptom_4']
 
-    feature_list = [Symptom_1,Symptom_2,Symptom_3,Symptom_4]
+    feature_list = [
+        label_encoder.transform([Symptom_1])[0],
+        label_encoder.transform([Symptom_2])[0],
+        label_encoder.transform([Symptom_3])[0],
+        label_encoder.transform([Symptom_4])[0],
+    ]
     single_predict = np.array(feature_list).reshape(1,-1)
 
     scaled_feature = ms.transform(single_predict)
