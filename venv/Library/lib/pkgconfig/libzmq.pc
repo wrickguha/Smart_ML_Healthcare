@@ -1,0 +1,12 @@
+prefix=d:/Python/Project/HealthCare/venv/Library
+exec_prefix=d:/Python/Project/HealthCare/venv/Library
+libdir=d:/Python/Project/HealthCare/venv/Library/lib
+includedir=d:/Python/Project/HealthCare/venv/Library/include
+
+Name: libzmq
+Description: 0MQ c++ library
+Version: 4.3.5
+Libs: -L${libdir} -lzmq
+Libs.private: 
+Requires.private: 
+Cflags: -I${includedir} 
