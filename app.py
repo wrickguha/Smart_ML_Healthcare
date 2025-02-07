@@ -5,6 +5,7 @@ import sklearn
 import pickle
 
 model = pickle.load(open('model.pkl','rb'))
+sc = pickle.load(open('standardscaler.pkl','rb'))
 ms = pickle.load(open('minmaxscaler.pkl','rb'))
 
 app = Flask(__name__)
