@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <form action="predict" method="POST">
+        <h2>Choose Symptoms: </h2>
+        <div class="row">
+            <div class="col-md-4">
+                  <label for="Symptom_1">First Symptom</label>
+                  <input type="text" id="Symptom_1" name="Symptom_1" placeholder="Enter Your 1st Symptom" class="form-control" required step="0">
+              </div>
+             <div class="col-md-4">
+                  <label for="Symptom_2">Second Symptom</label>
+                  <input type="text" id="Symptom_2" name="Symptom_2" placeholder="Enter Your 2nd Symptom" class="form-control" required step="00">
+              </div>
+              <div class="col-md-4">
+                  <label for="Symptom_3">Third Symptom</label>
+                  <input type="text" id="Symptom_3" name="Symptom_3" placeholder="Enter Your 3rd Symptom" class="form-control" required step="0">
+              </div>
+              <div class="col-md-4">
+                <label for="Symptom_4">Fourth Symptom</label>
+                <input type="text" id="Symptom_4" name="Symptom_4" placeholder="Enter Your 4th Symptom" class="form-control" required step="0">
+            </div>
+            <div class="col-md-12 text-center">
+				<button type="submit" class="btn btn-primary btn-lg">Get Prediction</button>
+			</div>
+        </div>
+    </form>
+
+    {% if result %}
+    <div class="card bg-dark" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Your Disease is: </h5>
+        <p class="card-text">{{ result }}</p>
+      </div>
+    </div>
+   {% endif %}
+
+
+</body>
+</html>
