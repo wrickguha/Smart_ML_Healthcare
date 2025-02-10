@@ -3,6 +3,9 @@ import { createDoctor, createHospital, createPatient, createTechnician } from ".
 
 const router= express.Router();
 
+//Login
+router.post('/login',);
+
 
 //Patient
 router.post('/register/patient', createPatient)
