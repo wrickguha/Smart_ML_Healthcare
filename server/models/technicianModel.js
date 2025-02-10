@@ -10,6 +10,10 @@ const technicianSchema = new Schema({
         type:String,
         required:true
     },
+    dob:{
+        type:Date,
+        required:true
+    },
     address: {
         type: String,
         required: true

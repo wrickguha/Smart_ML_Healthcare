@@ -6,7 +6,15 @@ const doctorSchema = new Schema({
         type: String,
         required: true
     },
-    fathersName:{
+    fatherName:{
+        type:String,
+        required:true
+    },
+    dob:{
+        type:Date,
+        required:true
+    },
+    gender:{
         type:String,
         required:true
     },

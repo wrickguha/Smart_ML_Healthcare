@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
 import Patient from "../models/patientModel.js";
+import Doctor from "../models/doctorModel.js";
+import Technician from "../models/technicianModel.js";
+import Hospital from "../models/hospitalModel.js";
 import Auth from "../models/authModel.js";
 
 
@@ -60,7 +63,7 @@ export const createPatient= async (req,res)=>{
 export const createDoctor= async (req,res)=>{
     // console.log(req.body);
     try {
-        const {email, password, name, age, gender, contactNumber, address, bloodgroup} = req.body;
+        const {email, password, name, fatherName, gender, dob, city, state, address, education, type, hospital} = req.body;
         // 
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log(hashedPassword);
@@ -68,21 +71,24 @@ export const createDoctor= async (req,res)=>{
         const auth= new Auth({
             email,
             password: hashedPassword,
-            type:3
+            type:2
         });
         const resultAuth= await auth.save();
         const uId= resultAuth._id;
         
-        const patient = new Patient({
-            name,
-            age,
-            gender,
-            contactNumber,
-            address,
-            bloodgroup,
-            userId: uId
+        const doctor = new Doctor({
+            name, 
+            fatherName, 
+            gender, 
+            dob, 
+            city, 
+            state, 
+            address, 
+            education, 
+            type, 
+            hospital
         })
-        const result = await patient.save();
+        const result = await doctor.save();
         
     } catch (error) {
         console.log(error);
@@ -93,7 +99,7 @@ export const createDoctor= async (req,res)=>{
 export const createTechnician= async (req,res)=>{
     // console.log(req.body);
     try {
-        const {email, password, name, age, gender, contactNumber, address, bloodgroup} = req.body;
+        const {email, password, name, fatherName, gender, dob, city, state, address, education, type, hospital} = req.body;
         // 
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log(hashedPassword);
@@ -101,21 +107,24 @@ export const createTechnician= async (req,res)=>{
         const auth= new Auth({
             email,
             password: hashedPassword,
-            type:3
+            type:4
         });
         const resultAuth= await auth.save();
         const uId= resultAuth._id;
         
-        const patient = new Patient({
-            name,
-            age,
-            gender,
-            contactNumber,
-            address,
-            bloodgroup,
-            userId: uId
+        const technician = new Technician({
+            name, 
+            fatherName, 
+            gender, 
+            dob, 
+            city, 
+            state, 
+            address, 
+            education, 
+            type, 
+            hospital
         })
-        const result = await patient.save();
+        const result = await technician.save();
         
     } catch (error) {
         console.log(error);
@@ -134,7 +143,7 @@ export const createHospital= async (req,res)=>{
         const auth= new Auth({
             email,
             password: hashedPassword,
-            type:3
+            type:5
         });
         const resultAuth= await auth.save();
         const uId= resultAuth._id;
